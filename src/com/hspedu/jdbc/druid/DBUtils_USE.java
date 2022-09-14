@@ -88,4 +88,20 @@ public class DBUtils_USE {
             throw new RuntimeException(e);
         }
     }
+    @Test
+    public void testDML() {
+        String sql = "insert into actor values (null,?,?,?,?)";
+        // 1.获取数据库连接
+        Connection connection = null;
+        try {
+            connection = JDBCUtilsByDruid.getConnection();
+            QueryRunner queryRunner = new QueryRunner();
+            int updateRows = queryRunner.update(connection, sql, "manchast","女" ,"1998-02-01","123");
+            System.out.println(updateRows);
+            JDBCUtilsByDruid.close(null,null,connection);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
