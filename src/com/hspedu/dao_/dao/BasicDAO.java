@@ -20,10 +20,10 @@ import java.util.List;
  * 描述：      TODO
  */
 public class BasicDAO<T> {//泛型指定具体类型
-    private QueryRunner queryRunner = new QueryRunner();
+    public QueryRunner queryRunner = new QueryRunner();
 
     //开发通用的dml方法。针对任意的表,返回受影响的行数
-    private int update(String sql, Object... parameters) {
+    public int update(String sql, Object... parameters) {
         int updateRows;
         Connection connection = null;
         try {
@@ -37,7 +37,7 @@ public class BasicDAO<T> {//泛型指定具体类型
     }
 
     //返回多个对象，针对任意表
-    private List<T> queryForList(String sql, Class<T> clazz, Object... parameters) {
+    public List<T> queryForList(String sql, Class<T> clazz, Object... parameters) {
         List<T> list = new ArrayList<T>();
         Connection connection = null;
         try {
@@ -51,7 +51,7 @@ public class BasicDAO<T> {//泛型指定具体类型
     }
 
     //返回单行结果的对象，针对任意表
-    private T queryForSingleRow(String sql, Class<T> clazz, Object... parameters) {
+    public T queryForSingleRow(String sql, Class<T> clazz, Object... parameters) {
         Connection connection = null;
         try {
             connection = JDBCUtilsByDruid.getConnection();
@@ -64,7 +64,7 @@ public class BasicDAO<T> {//泛型指定具体类型
     }
 
     //返回单个值的结果的对象，针对任意表
-    private Object queryForSingle(String sql, Object... parameters) {
+    public Object queryForSingle(String sql, Object... parameters) {
         Connection connection = null;
         try {
             connection = JDBCUtilsByDruid.getConnection();
